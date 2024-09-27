@@ -167,7 +167,6 @@ class neural_network_class( torch.nn.Module ):
         self.optimizer = torch.optim.Adam( self.parameters(  ), lr = self.learning_rate, betas = ( 0.9, 0.999 ), eps = 1e-08, weight_decay = 0 )
 
         # Initialize the training losses, testing epochs, and testing losses.
-        # self.training_losses, self.testing_epochs, self.testing_losses = self.initialize_training_testing_losses( self.num_epochs )
         self.training_losses, self.ic_training_losses, self.bc_training_losses, self.residual_training_losses, self.variational_training_losses, self.monotonicity_training_losses, self.testing_epochs, self.testing_losses, self.ic_testing_losses, self.bc_testing_losses, self.residual_testing_losses, self.variational_testing_losses, self.monotonicity_testing_losses = self.initialize_training_testing_losses( self.num_epochs )
 
         # Initialize the classification loss function.
@@ -390,7 +389,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_num_residual_points( self, num_residual_points = None ):
 
         # Determine whether to use the stored number of residual points.
-        if num_residual_points is None:             # If the number of residual points was not provided...
+        if num_residual_points is None:                 # If the number of residual points was not provided...
 
             # Set the number of residual points to be the stored value.
             num_residual_points = self.training_data.num_residual_points
@@ -403,7 +402,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_residual_batch_size( self, residual_batch_size = None ):
 
         # Determine whether to use the stored residual batch size.
-        if residual_batch_size is None:             # If the residual batch size was not provided...
+        if residual_batch_size is None:                 # If the residual batch size was not provided...
 
             # Set the residual batch size to be the stored value.
             residual_batch_size = self.residual_batch_size
@@ -416,7 +415,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_residual_input_data_batch( self, residual_input_data_batch = None ):
 
         # Determine whether to use the stored residual input data batch.
-        if residual_input_data_batch is None:                # If the input data batch was not provided...
+        if residual_input_data_batch is None:           # If the input data batch was not provided...
 
             # Use the stored residual input data batch.
             residual_input_data_batch = self.training_data.residual_data.residual_input_data_batch
@@ -429,7 +428,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_integration_points_batch( self, xs_integration_points_batch = None ):
 
         # Determine whether to use the stored integration points batch.
-        if xs_integration_points_batch is None:             # If the integration points batch was not provided...
+        if xs_integration_points_batch is None:         # If the integration points batch was not provided...
 
             # Set the integration points batch to be the stored value.
             xs_integration_points_batch = self.training_data.variational_data.xs_integration_points_batch
@@ -442,7 +441,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_basis_values_batch( self, G_basis_values_batch = None ):
 
         # Determine whether to use the stored basis values batch.
-        if G_basis_values_batch is None:             # If the basis values batch was not provided...
+        if G_basis_values_batch is None:                # If the basis values batch was not provided...
 
             # Set the basis values batch to be the stored value.
             G_basis_values_batch = self.training_data.variational_data.G_basis_values_batch
@@ -455,7 +454,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_integration_weights_batch( self, W_integration_weights_batch = None ):
 
         # Determine whether to use the stored integration weights batch.
-        if W_integration_weights_batch is None:             # If the integration weights batch was not provided...
+        if W_integration_weights_batch is None:         # If the integration weights batch was not provided...
 
             # Set the integration weights batch to be the stored value.
             W_integration_weights_batch = self.training_data.variational_data.W_integration_weights_batch
@@ -468,7 +467,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_jacobian_batch( self, sigma_jacobian_batch = None ):
 
         # Determine whether to use the stored jacobian batch.
-        if sigma_jacobian_batch is None:             # If the jacobian batch was not provided...
+        if sigma_jacobian_batch is None:                # If the jacobian batch was not provided...
 
             # Set the jacobian batch to be the stored value.
             sigma_jacobian_batch = self.training_data.variational_data.sigma_jacobian_batch
@@ -975,7 +974,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_num_exploration_points( self, num_exploration_points = None ):
 
         # Determine whether to use the stored number of exploration points.
-        if num_exploration_points is None:          # If the number of exploration points was not provided...
+        if num_exploration_points is None:                  # If the number of exploration points was not provided...
 
             # Set the number of exploration points to be the stored value.
             num_exploration_points = self.num_exploration_points
@@ -1037,7 +1036,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_classification_noise_magnitude_spatial( self, classification_noise_magnitude_spatial ):
 
         # Determine whether to use the stored spatial classification noise magnitude.
-        if classification_noise_magnitude_spatial is None:              # If the spatial classification noise magnitude was not provided...
+        if classification_noise_magnitude_spatial is None:                      # If the spatial classification noise magnitude was not provided...
 
             # Set the spatial classification noise magnitude to be the stored value.
             classification_noise_magnitude_spatial = self.classification_noise_magnitude_spatial
@@ -1063,17 +1062,17 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_classification_noise_magnitude( self, classification_noise_magnitude = None, domain_subset_type = 'spatiotemporal' ):
 
         # Determine how to preprocess the classification noise magnitude.
-        if domain_subset_type.lower(  ) == 'spatial':                                                # If the domain subset type is spatial...
+        if domain_subset_type.lower(  ) == 'spatial':                                   # If the domain subset type is spatial...
 
             # Preprocess the spatial classification noise magnitude.
             classification_noise_magnitude = self.preprocess_classification_noise_magnitude_spatial( classification_noise_magnitude )
 
-        elif domain_subset_type.lower(  ) == 'spatiotemporal':                                                     # If the domain subset type is spatiotemporal...
+        elif domain_subset_type.lower(  ) == 'spatiotemporal':                          # If the domain subset type is spatiotemporal...
 
             # Preprocess the spatiotemporal classification noise magnitude.
             classification_noise_magnitude = self.preprocess_classification_noise_magnitude_spatiotemporal( classification_noise_magnitude )
 
-        else:                                                                                               # Otherwise...
+        else:                                                                           # Otherwise...
 
             # Throw an error.
             raise ValueError( f'Invalid domain subset type: {domain_subset_type}' )
@@ -1086,7 +1085,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_num_noisy_samples_per_level_set_point( self, num_noisy_samples_per_level_set_point = None ):
 
         # Determine whether to use the default number of noisy samples per level set point.
-        if num_noisy_samples_per_level_set_point is None:               # If the number of noisy samples per level set point was not provided...
+        if num_noisy_samples_per_level_set_point is None:                           # If the number of noisy samples per level set point was not provided...
 
             # Set the number of noisy samples per level set point to one.
             num_noisy_samples_per_level_set_point = torch.tensor( 1, dtype = torch.float32, device = self.device )
@@ -1187,7 +1186,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_network_classifications( self, network_classifications ):
 
         # Preprocess the network classifications.
-        if network_classifications is None:             # If the network classifications was not provided...
+        if network_classifications is None:         # If the network classifications was not provided...
 
             # Set the network classifications to be the stored value.
             network_classifications = self.network_classifications
@@ -1200,7 +1199,7 @@ class neural_network_class( torch.nn.Module ):
     def preprocess_actual_classifications( self, actual_classifications ):
 
         # Preprocess the actual classifications.
-        if actual_classifications is None:             # If the actual classifications was not provided...
+        if actual_classifications is None:          # If the actual classifications was not provided...
 
             # Set the actual classifications to be the stored value.
             actual_classifications = self.actual_classifications
@@ -1356,7 +1355,7 @@ class neural_network_class( torch.nn.Module ):
     def is_residual_function_code_compatible( self, residual_function = None, residual_code = None, num_residual_function_inputs = None ):
 
         # Determine whether to use the stored residual function.
-        if residual_function is None:               # If the residual function was not provided...
+        if residual_function is None:                                                           # If the residual function was not provided...
 
             # Use the stored residual function.
             residual_function = self.residual_function
@@ -1622,7 +1621,7 @@ class neural_network_class( torch.nn.Module ):
     def validate_layers( self, layers, set_flag = False ):
 
         # Determine how to set the layers.
-        if not self.is_layers_valid( layers ):                  # If the layers variable is not valid...
+        if not self.is_layers_valid( layers ):                                  # If the layers variable is not valid...
 
             # Throw an error.
             raise ValueError( f'Invalid layers variable: {layers}' )
@@ -2066,22 +2065,22 @@ class neural_network_class( torch.nn.Module ):
     def compute_num_required_derivatives( self, derivative_code ):
 
         # Determine the number of residual inputs from the residual code.
-        if derivative_code is None:                                   # If the residual code is None...
+        if derivative_code is None:                                                             # If the residual code is None...
 
             # Set the number of residual inputs to None.
             num_required_derivatives = None
 
-        elif torch.is_tensor( derivative_code ):                      # If the residual code is itself a tensor...
+        elif torch.is_tensor( derivative_code ):                                                # If the residual code is itself a tensor...
 
             # Set the number of residual inputs to be one.
             num_required_derivatives = torch.tensor( 1, dtype = torch.uint8, device = self.device )
 
-        elif isinstance( derivative_code, list ) or isinstance( derivative_code, tuple ):                     # If the residual code is a list or tuple...
+        elif isinstance( derivative_code, list ) or isinstance( derivative_code, tuple ):       # If the residual code is a list or tuple...
 
             # Set the number of residual inputs.
             num_required_derivatives = torch.tensor( len( derivative_code ), dtype = torch.uint8, device = self.device )
 
-        else:                                                       # Otherwise... (i.e., the residual code is not recognized...)
+        else:                                                                                   # Otherwise... (i.e., the residual code is not recognized...)
 
             # Throw an error.
             raise ValueError( f'Invalid residual code: {derivative_code}' )
@@ -2418,11 +2417,9 @@ class neural_network_class( torch.nn.Module ):
         num_points_per_element = G_basis_values_batch.shape[ 2 ]
 
         # Compute the residual at the integration points ( Note that the integration points must be reshaped before being passed to the residual function. )
-        # residual = self.residual( torch.reshape( xs_integration_points_batch, ( -1, num_dimensions ) ), derivative_required_for_residual, residual_code )
         residual = self.residual( torch.reshape( xs_integration_points_batch, ( -1, num_dimensions, num_timesteps ) ), derivative_required_for_residual, residual_code )
 
         # Construct the residual tensor by reshaping the residual.
-        # R_residual_batch = torch.repeat_interleave( torch.reshape( residual, ( -1, 1, num_points_per_element ) ), repeats = num_basis_functions, axis = 1 )         # [nc x nb x ne]
         R_residual_batch = torch.repeat_interleave( torch.reshape( residual[ ..., -1 ], ( -1, 1, num_points_per_element ) ), repeats = num_basis_functions, axis = 1 )         # [nc x nb x ne]
 
         # Compute the variation for each element and each basis function.
@@ -2579,8 +2576,6 @@ class neural_network_class( torch.nn.Module ):
                 
                 # Retrieve the targets associated with this output source.
                 targets = initial_boundary_condition_data[ k1 ].output_data_batch[ k2 ]
-                # targets = torch.unsqueeze( initial_boundary_condition_data[ k1 ].output_data_batch[ k2 ], dim = 2 )
-                # targets = torch.repeat_interleave( torch.unsqueeze( initial_boundary_condition_data[ k1 ].output_data_batch[ k2 ], dim = 2 ), initial_boundary_condition_data[ k1 ].input_data_batch.shape[ 2 ], dim = 2 )
 
                 # Retrieve the values associated with this output source.
                 values = network_derivative[ initial_boundary_condition_data[ k1 ].output_derivative_order[ k2 ].item(  ) ][ ..., -1 ]
@@ -2895,7 +2890,7 @@ class neural_network_class( torch.nn.Module ):
         k2 += 1
 
         # Train the network for the specified number of epochs.
-        while ( not stop_early_flag ) and ( k1 < ( num_epochs + 1 ) ) :                                             # While we have not met early stopping criteria and have not yet performed all of the training epochs...
+        while ( not stop_early_flag ) and ( k1 < ( num_epochs + 1 ) ) :                                     # While we have not met early stopping criteria and have not yet performed all of the training epochs...
 
             # Compute the percent completion.
             new_percent_complete = self.compute_percent_completion( k1, num_epochs )
@@ -3042,7 +3037,7 @@ class neural_network_class( torch.nn.Module ):
         derivatives = [ numerator ]
 
         # Compute each of the requested derivatives.
-        for k in range( num_derivatives ):                                                        # Iterate through each derivative...
+        for k in range( num_derivatives ):                                                                                  # Iterate through each derivative...
 
             # Compute this derivative.
             derivatives.append( self.compute_derivative( derivatives[ k ], denominators[ k ] ) )
@@ -3125,12 +3120,12 @@ class neural_network_class( torch.nn.Module ):
                     # Throw an error.
                     raise ValueError( f'Invalid derivative code: {derivative_code}' )
 
-        elif torch.is_tensor( derivative_code ):                  # If the  derivative code is a tensor...
+        elif torch.is_tensor( derivative_code ):                    # If the  derivative code is a tensor...
 
             # Retrieve the unique entries of the derivative code tensor.
             unique_derivative_code = derivative_code.unique(  )
 
-        else:                                                   # Otherwise... (i.e., the derivative code is not recognized...)    
+        else:                                                       # Otherwise... (i.e., the derivative code is not recognized...)    
 
             # Throw an error.
             raise ValueError( f'Invalid derivative code: {derivative_code}' )
@@ -3141,12 +3136,12 @@ class neural_network_class( torch.nn.Module ):
             # Determine which dimension derivatives are required based on the derivative code.
             for k in range( num_inputs ):                           # Iterate through each of the unique derivatives...
 
-                if any( unique_derivative_code == k ):                    # If this input is in the unique derivative code...
+                if any( unique_derivative_code == k ):              # If this input is in the unique derivative code...
 
                     # Indicate that a derivative with respect to this input dimension is required for the derivative calculation.
                     derivative_requirements[ k ] = True
 
-                else:                                                   # Otherwise... (If this input is not in the unique derivative code...)  
+                else:                                               # Otherwise... (If this input is not in the unique derivative code...)  
 
                     # Indicate that a derivative with respect to this input dimension is not required for the derivative calculation.
                     derivative_requirements[ k ] = False
@@ -3239,7 +3234,7 @@ class neural_network_class( torch.nn.Module ):
         num_required_derivatives = self.compute_num_required_derivatives( derivative_code )
 
         # Determine whether there are any network derivatives.
-        if num_required_derivatives is None:                                             # If there are no derivatives to compute...
+        if num_required_derivatives is None:                                        # If there are no derivatives to compute...
 
             # Set the network derivatives to None.
             network_derivatives = None
@@ -3247,7 +3242,7 @@ class neural_network_class( torch.nn.Module ):
         else:                                                                       # Otherwise... (i.e., if the number of network derivatives is not none...)
 
             # Determine whether to embed the derivative code tensor in a list.
-            if torch.is_tensor( derivative_code ):                                    # If the derivative code is itself a tensor...
+            if torch.is_tensor( derivative_code ):                                  # If the derivative code is itself a tensor...
 
                 # Embed the derivative code tensor in a list.
                 derivative_code = [ derivative_code ]
@@ -3256,22 +3251,21 @@ class neural_network_class( torch.nn.Module ):
             network_derivatives = [  ]
 
             # Compute each of the network derivatives.
-            for k1 in range( num_required_derivatives ):             # Iterate through each of the network derivatives...
+            for k1 in range( num_required_derivatives ):                    # Iterate through each of the network derivatives...
 
                 # Determine whether there are derivatives to compute associated with this network derivative.
-                if derivative_code[ k1 ] is not None:             # If this derivative code list entry is not None...
+                if derivative_code[ k1 ] is not None:                       # If this derivative code list entry is not None...
 
                     # Initialize this network derivative to the network output.
                     network_derivative = network_output
 
                     # Compute any necessary derivatives for this network derivative.
-                    for k2 in range( derivative_code[ k1 ].numel(  ) ):                                   # Iterate through each of the derivatives that are required for this residual input...
+                    for k2 in range( derivative_code[ k1 ].numel(  ) ):     # Iterate through each of the derivatives that are required for this residual input...
 
                         # Compute the derivatives associated with this residual input.
                         network_derivative = self.compute_derivative( network_derivative, network_input_tuple[ derivative_code[ k1 ][ k2 ] ] )
-                        # network_derivative = self.compute_derivative( network_derivative[ ..., -1 ], network_input_tuple[ derivative_code[ k1 ][ k2 ] ][ ..., -1 ] )
 
-                else:                                           # Otherwise... ( i.e., this derivative code list entry is None... )
+                else:                                                       # Otherwise... ( i.e., this derivative code list entry is None... )
 
                     # Set the network derivative to be the network inputs.
                     network_derivative = torch.cat( network_input_tuple, dim = 1 )
@@ -3301,9 +3295,6 @@ class neural_network_class( torch.nn.Module ):
 
         # Preprocess the temporal code.
         temporal_code = self.preprocess_temporal_code( temporal_code )
-
-        # network_input_tuple = ( network_input_tuple[ 0 ][ ..., -1 ], network_input_tuple[ 1 ][ ..., -1 ], network_input_tuple[ 2 ][ ..., -1 ] )
-        # network_output = network_output[ ..., -1 ]
 
         # Compute the temporal derivative.
         temporal_derivative = self.compute_network_derivatives( network_input_tuple, network_output, temporal_code )
@@ -3364,10 +3355,10 @@ class neural_network_class( torch.nn.Module ):
     def check_early_stop_criteria( self ):
 
         # Set the early stop flag to false.
-        b_early_stop = False
+        early_stop_flag = False
 
         # Return the early stop false.
-        return b_early_stop
+        return early_stop_flag
 
 
     #%% ------------------------------------------------------------ UTILITY FUNCTIONS ------------------------------------------------------------
@@ -3507,12 +3498,12 @@ class neural_network_class( torch.nn.Module ):
     def level_function( self, spatiotemporal_point, domain ):
 
         # Determine how to compute the network's value.
-        if domain.contains( spatiotemporal_point, 'spatiotemporal' ):                # If the given point is in the domain...
+        if domain.contains( spatiotemporal_point, 'spatiotemporal' ):               # If the given point is in the domain...
 
             # Compute the network prediction at this point.
             level_value = self.forward( spatiotemporal_point )
 
-        else:                                   # Otherwise... ( i.e., the given point is not in the domain... )
+        else:                                                                       # Otherwise... ( i.e., the given point is not in the domain... )
 
             # Set the network prediction to be some constant.
             level_value = torch.linalg.norm( spatiotemporal_point, ord = 2, keepdim = True )**2
@@ -3717,7 +3708,7 @@ class neural_network_class( torch.nn.Module ):
             new_percent_complete = self.compute_percent_completion( batch_number, num_batches )
 
             # Determine whether to print out batch information.
-            if ( ( new_percent_complete - old_percent_complete ) >= batch_print_frequency ):                                 # If this is a batch whose information we would like to print...
+            if ( ( new_percent_complete - old_percent_complete ) >= batch_print_frequency ):    # If this is a batch whose information we would like to print...
 
                 # Print out batch information.
                 self.print_batch_info( batch_number, batch_loss, new_percent_complete, batch_duration )
@@ -3776,7 +3767,7 @@ class neural_network_class( torch.nn.Module ):
     def print_ending_epoch_status( self, training_loss, testing_loss, epoch_duration, print_flag ):
 
         # Determine whether to print the ending information for this epoch.
-        if print_flag:                                          # If we want to print information for this epoch...
+        if print_flag:                      # If we want to print information for this epoch...
             
             # Print the ending information for this epoch.
             self.print_ending_epoch_info( training_loss, testing_loss, epoch_duration )
@@ -3801,7 +3792,7 @@ class neural_network_class( torch.nn.Module ):
     def print_starting_training_status( self, print_flag ):
 
         # Determine whether to print the starting information for this epoch.
-        if print_flag:                                          # If we want to print information for this training session...
+        if print_flag:                      # If we want to print information for this training session...
 
             # Print starting training info.
             self.print_starting_training_info(  )
@@ -3826,7 +3817,7 @@ class neural_network_class( torch.nn.Module ):
     def print_ending_training_status( self, duration, print_flag ):
 
         # Determine whether to print the ending information for this epoch.
-        if print_flag:                                          # If we want to print information for this training session...
+        if print_flag:                      # If we want to print information for this training session...
 
             # Print ending training info.
             self.print_ending_training_info( duration )
@@ -4218,10 +4209,10 @@ class neural_network_class( torch.nn.Module ):
         level_set_points = self.generate_level_set_at_time( num_spatial_dimensions, num_timesteps, domain, plot_times, level, level_set_guess, newton_tolerance, newton_max_iterations, exploration_radius, num_exploration_points, unique_tolerance, domain_subset_type )
 
         # Determine whether there is a level set to plot.
-        if level_set_points.numel(  ) != 0:                    # If there is a level set to plot...
+        if level_set_points.numel(  ) != 0:                     # If there is a level set to plot...
 
             # Determine whether to tile the level set points.
-            if num_timesteps != 0:          # If the number of timesteps is not zero...
+            if num_timesteps != 0:                              # If the number of timesteps is not zero...
 
                 # Tile the level set points.
                 level_set_points = torch.tile( torch.unsqueeze( level_set_points, dim = 2 ), dims = [ 1, 1, num_timesteps ] )
@@ -4235,13 +4226,13 @@ class neural_network_class( torch.nn.Module ):
             projection_values = None
 
             # Determine whether to process the level set points prior to plotting.
-            if num_timesteps != 0:          # If the number of timesteps is not zero...
+            if num_timesteps != 0:                              # If the number of timesteps is not zero...
 
                 # Retrieve only the final timestep points.
                 level_set_points = level_set_points[ :, 1:, -1 ]
                 level_set_values = level_set_values[ ..., -1 ]
 
-            else:                           # Otherwise...
+            else:                                               # Otherwise...
 
                 # Remove the first dimension.
                 level_set_points = level_set_points[ :, 1: ]
@@ -4292,8 +4283,6 @@ class neural_network_class( torch.nn.Module ):
             # Set the 1D style.
             D1_style_correct = '.g'
             D1_style_incorrect = '.y'
-            D1_style_correct_forecast = 'xg'
-            D1_style_incorrect_forecast = 'xy'
 
             # Compute the correct indexes.
             correct_indexes = torch.squeeze( actual_classifications == network_classifications )
@@ -4302,15 +4291,9 @@ class neural_network_class( torch.nn.Module ):
             classification_data_correct_input = torch.unsqueeze( classification_data[ correct_indexes, 1 ], 1 )
             classification_data_correct_output = torch.unsqueeze( classification_data[ correct_indexes, 2 ], 1 )
 
-            classification_data_forecast_correct_input = torch.unsqueeze( classification_data_forecast[ correct_indexes, 1 ], 1 )
-            classification_data_forecast_correct_output = torch.unsqueeze( classification_data_forecast[ correct_indexes, 2 ], 1 )
-
             # Retrieve the incorrect classification points.
             classification_data_incorrect_input = torch.unsqueeze( classification_data[ ~correct_indexes, 1 ], 1 )
             classification_data_incorrect_output = torch.unsqueeze( classification_data[ ~correct_indexes, 2 ], 1 )
-
-            classification_data_forecast_incorrect_input = torch.unsqueeze( classification_data_forecast[ ~correct_indexes, 1 ], 1 )
-            classification_data_forecast_incorrect_output = torch.unsqueeze( classification_data_forecast[ ~correct_indexes, 2 ], 1 )
 
             # Determine whether there is correct classification data to plot.
             if ( classification_data_correct_input.numel(  ) != 0 ) and ( classification_data_correct_output.numel(  ) != 0 ):            # If there is correct classification data to plot...
@@ -4323,10 +4306,6 @@ class neural_network_class( torch.nn.Module ):
                 
                 # Plot the incorrect classification data.
                 figs, axes = self.plotting_utilities.plot( classification_data_incorrect_input, classification_data_incorrect_output, projection_dimensions, projection_values, level, fig[ 0 ], input_labels, title_string, save_directory, as_surface, as_stream, as_contour, show_plot, D1_style_incorrect )
-            
-            # Plot the forecasted classification data.
-            # figs, axes = self.plotting_utilities.plot( classification_data_forecast_correct_input, classification_data_forecast_correct_output, projection_dimensions, projection_values, level, fig[ 0 ], input_labels, title_string, save_directory, as_surface, as_stream, as_contour, show_plot, D1_style_correct_forecast )
-            # figs, axes = self.plotting_utilities.plot( classification_data_forecast_incorrect_input, classification_data_forecast_incorrect_output, projection_dimensions, projection_values, level, fig[ 0 ], input_labels, title_string, save_directory, as_surface, as_stream, as_contour, show_plot, D1_style_incorrect_forecast )
 
         else:                                                                   # Otherwise...
 

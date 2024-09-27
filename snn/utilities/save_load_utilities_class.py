@@ -19,8 +19,6 @@
 # Import standard libraries.
 import dill as pickle
 
-# Import custom libraries.
-
 
 #%% ------------------------------------------------------------ SAVE-LOAD UTILITIES CLASS ------------------------------------------------------------
 
@@ -63,7 +61,7 @@ class save_load_utilities_class(  ):
         file_path = save_path + '/' + file_name
 
         # Open ( or create ) a temporary file to store the object.
-        with open( file_path, 'wb' ) as file:               # With the object file open...
+        with open( file_path, 'wb' ) as file:                           # With the object file open...
 
             # Save the object.
             pickle.dump( data, file )

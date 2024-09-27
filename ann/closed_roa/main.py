@@ -50,7 +50,7 @@ np.random.seed( 0 )                                                     # [#] Nu
 torch.manual_seed( 0 )                                                  # [#] Torch random seed.
 
 # Set the computational device.
-device = 'cuda:0' if torch.cuda.is_available(  ) else 'cpu'             # [str] Computational device: 'cpu, 'cuda', 'cuda:0', etc.
+device = 'cuda' if torch.cuda.is_available(  ) else 'cpu'             # [str] Computational device: 'cpu, 'cuda', 'cuda:0', etc.
 
 # Retrieve the starting time.
 start_time = time.time(  )                                              # [s] Starting time.
@@ -250,6 +250,7 @@ pinn.save( save_path, 'pinn_after_training.pkl' )
 
 #%% ---------------------------------------- COMPUTE CLASSIFICATION LOSS ----------------------------------------
 
+# Ensure that the number of noisy sample points per level set point is updated.
 pinn.pinn_options.num_noisy_samples_per_level_set_point = num_noisy_samples_per_level_set_point
 
 # Compute the classification loss.

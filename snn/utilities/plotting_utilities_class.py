@@ -251,7 +251,7 @@ class plotting_utilities_class(  ):
         assert self.validate_data( input_data )
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1' ]
@@ -294,7 +294,7 @@ class plotting_utilities_class(  ):
         assert self.validate_data( output_data )
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1' ]
@@ -337,7 +337,7 @@ class plotting_utilities_class(  ):
         assert self.validate_data( output_data )
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1' ]
@@ -380,7 +380,7 @@ class plotting_utilities_class(  ):
         assert self.validate_data( output_data )
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1' ]
@@ -419,7 +419,7 @@ class plotting_utilities_class(  ):
     def plot_2in_0out_data( self, input_data, fig = None, input_labels = [ 'in1', 'in2' ], title_string = '2i0o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2' ]
@@ -461,7 +461,7 @@ class plotting_utilities_class(  ):
     def plot_2in_1out_data( self, input_data, output_data, level = 0, fig = None, input_labels = [ 'in1', 'in2' ], title_string = '2i1o Data Plot', save_directory = r'.', as_surface = True, as_contour = True, show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2' ]
@@ -475,7 +475,7 @@ class plotting_utilities_class(  ):
         else:                               # Otherwise... ( i.e., A figure was provided... )
           
             # Determine whether the provided fig is embedded in a list.
-            if isinstance( fig, list ):                 # If the figure is embedded in a list...
+            if isinstance( fig, list ):     # If the figure is embedded in a list...
 
                 # Unembed the figure from the list.
                 fig = fig[ 0 ]
@@ -496,7 +496,7 @@ class plotting_utilities_class(  ):
             ax.plot_surface( self.plot_process( input_data[ ..., 0 ] ), self.plot_process( input_data[ ..., 1 ] ), self.plot_process( output_data[ ..., 0 ] ) )
 
             # Determine whether to plot the contour.
-            if as_contour:                      # If we want to plot a contour...
+            if as_contour:                  # If we want to plot a contour...
 
                 # fig, ax = plt.subplots( subplot_kw = { 'projection': '3d' } )
 
@@ -536,7 +536,7 @@ class plotting_utilities_class(  ):
     def plot_2in_2out_data( self, input_data, output_data, fig = None, input_labels = [ 'in1', 'in2' ], title_string = '2i2o Data Plot', save_directory = r'.', as_stream = True, show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2' ]
@@ -589,7 +589,7 @@ class plotting_utilities_class(  ):
     def plot_2in_3out_data( self, input_data, output_data, fig = None, input_labels = [ 'in1', 'in2' ], title_string = '2i3o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2' ]
@@ -631,7 +631,7 @@ class plotting_utilities_class(  ):
     def plot_3in_0out_data( self, input_data, fig = None, input_labels = [ 'in1', 'in2', 'in3' ], title_string = '3i0o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2', 'in3' ]
@@ -673,7 +673,7 @@ class plotting_utilities_class(  ):
     def plot_3in_1out_data( self, input_data, output_data, fig = None, input_labels = [ 'in1', 'in2', 'in3' ], title_string = '3i1o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2', 'in3' ]
@@ -715,7 +715,7 @@ class plotting_utilities_class(  ):
     def plot_3in_2out_data( self, input_data, output_data, figs = None, input_labels = [ 'in1', 'in2', 'in3' ], title_string = '3i2o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2', 'in3' ]
@@ -787,7 +787,7 @@ class plotting_utilities_class(  ):
     def plot_3in_3out_data( self, input_data, output_data, figs = None, input_labels = [ 'in1', 'in2', 'in3' ], title_string = '3i3o Data Plot', save_directory = r'.', show_plot = False ):
 
         # Determine whether to set the input labels to a default value.
-        if input_labels is None:                    # If the input labels variable is None...
+        if input_labels is None:            # If the input labels variable is None...
 
             # Set the input labels to be a default value.
             input_labels = [ 'in1', 'in2', 'in3' ]
@@ -901,10 +901,10 @@ class plotting_utilities_class(  ):
             input_labels = [ f'in{k}' for k in range( num_input_dimensions ) ]
 
         # Determine which plot to create based on the number of input dimensions.
-        if ( num_input_dimensions == 1 ):                               # If the input is a scalar...
+        if ( num_input_dimensions == 1 ):           # If the input is a scalar...
 
             # Determine whether to set the number of output dimensions to zero.
-            if not num_output_dimensions:                                       # If the number of output dimensions is an empty list...
+            if not num_output_dimensions:           # If the number of output dimensions is an empty list...
 
                 # Create a plot for the single input no output data.
                 figs, axes = self.plot_1in_0out_data( input_data, fig, input_labels, title_string, save_directory, show_plot )
@@ -994,7 +994,7 @@ class plotting_utilities_class(  ):
         elif ( num_input_dimensions == 3 ):                             # If the input is a 3D vector...
 
             # Determine whether to set the number of output dimensions to zero.
-            if not num_output_dimensions:                                       # If the number of output dimensions is an empty list...
+            if not num_output_dimensions:                               # If the number of output dimensions is an empty list...
 
                 # Create a plot for the three input no output data.
                 figs, axes = self.plot_3in_0out_data( input_data, fig, input_labels, title_string, save_directory, show_plot )
@@ -1198,19 +1198,19 @@ class plotting_utilities_class(  ):
         num_rows, num_cols = self.get_subplot_rc_nums( num_basis_functions )
 
         # Determine how to plot the basis functions.
-        if xis.shape[ -1 ] == 3:                   # If this is a 3D problem...
+        if xis.shape[ -1 ] == 3:                                    # If this is a 3D problem...
 
             # Create subplots.
             fig, axes_temp = plt.subplots( nrows = num_rows, ncols = num_cols, subplot_kw = { 'projection': '3d' } )
 
             # Ensure that the axes are at least a single list.
-            if not isinstance( axes_temp, list ):                    # If the axes object is not a list...
+            if not isinstance( axes_temp, list ):                   # If the axes object is not a list...
 
                 # Embed the axes object into a list.
                 axes_temp = [ axes_temp ]
 
             # Ensure that the axes are double lists.
-            if not isinstance( axes_temp[ 0 ], list ):                  # If the axes object is only a single list...
+            if not isinstance( axes_temp[ 0 ], list ):              # If the axes object is only a single list...
 
                 # Embed the axes object in a list.
                 axes = [ [ axes_temp[k] ] for k in range( len( axes_temp ) ) ]
@@ -1224,11 +1224,11 @@ class plotting_utilities_class(  ):
             k3 = torch.tensor( 0, dtype = torch.int64, device = xis.device )
 
             # Plot the basis functions.
-            for k1 in range( num_rows ):              # Iterate through the subplot rows...
-                for k2 in range( num_cols ):          # Iterate through the subplot columns...
+            for k1 in range( num_rows ):                # Iterate through the subplot rows...
+                for k2 in range( num_cols ):            # Iterate through the subplot columns...
 
                     # Determine whether to plot this basis function.
-                    if k3 < num_basis_functions:                   # If this index corresponds to a valid basis function...
+                    if k3 < num_basis_functions:        # If this index corresponds to a valid basis function...
 
                         # Plot the basis function.
                         axes[ k1 ][ k2 ].scatter3D( self.xis[ :, 0 ], self.xis[ :, 1 ], self.xis[ :, 2 ], c = g[ k3, : ], s = 20 )
@@ -1240,7 +1240,7 @@ class plotting_utilities_class(  ):
                     k3 += 1
 
         # Determine whether to show the plot.
-        if show_plot_flag:                   # If we want to show the plot...
+        if show_plot_flag:                              # If we want to show the plot...
             
             # Show the plot.
             plt.show(  ) 

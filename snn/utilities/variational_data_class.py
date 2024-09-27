@@ -97,38 +97,6 @@ class variational_data_class( pinn_data_class ):
 
     #%% ------------------------------------------------------------ SETUP FUNCTIONS ------------------------------------------------------------
 
-    # # Implement a function to setup the shuffle indexes.
-    # def setup_shuffle_indexes( self, shuffle_indexes = None, finite_elements = None ):
-
-    #     # Setup the finite elements.
-    #     finite_elements = self.preprocess_finite_elements( finite_elements )
-
-    #     # Determine whether to generate shuffle shuffle_indexes.
-    #     if shuffle_indexes is None:                     # If shuffle shuffle_indexes where not provided...
-
-    #         # Generate shuffled shuffle_indexes.
-    #         shuffle_indexes = torch.randperm( finite_elements.num_elements, dtype = torch.int64, device = self.device )
-
-    #     # Return the shuffle indexes.
-    #     return shuffle_indexes
-
-
-    # # Implement a function to setup the number of elements.
-    # def setup_num_elements( self, num_elements = None, finite_elements = None ):
-
-    #     # Setup the finite elements.
-    #     finite_elements = self.preprocess_finite_elements( finite_elements )
-
-    #     # Determine whether to use the stored number of elements.
-    #     if num_elements is None:                                 # If the number of elements was not provided...
-
-    #         # Use the stored number of elements.
-    #         num_elements = finite_elements.num_elements
-
-    #     # Return the number of elements.
-    #     return num_elements
-
-
     # Implement a function to setup finite elements.
     def setup_elements( self, finite_elements = None, batch_number = None, batch_size = None ):
 
@@ -218,7 +186,7 @@ class variational_data_class( pinn_data_class ):
         finite_elements, batch_number, batch_size = self.setup_elements( finite_elements, batch_number, batch_size )
 
         # Determine how to handle the elements batches.
-        if batch_option.lower(  ) in ( 'leave', 'keep', 'ignore', 'current', 'existing' ):                 # If we want to keep the existing element batch data...
+        if batch_option.lower(  ) in ( 'leave', 'keep', 'ignore', 'current', 'existing' ):  # If we want to keep the existing element batch data...
 
             xs_integration_points_batch = self.xs_integration_points_batch
             G_basis_values_batch = self.G_basis_values_batch
@@ -232,12 +200,12 @@ class variational_data_class( pinn_data_class ):
             W_integration_weights_batch = None
             sigma_jacobian_batch = None
 
-        elif batch_option.lower(  ) in ( 'replace', 'new', 'draw', 'compute' ):                # If we want to replace the existing element batch data by drawing a batch from the new element data...
+        elif batch_option.lower(  ) in ( 'replace', 'new', 'draw', 'compute' ):             # If we want to replace the existing element batch data by drawing a batch from the new element data...
 
             # Compute the element batch data associated with 
             xs_integration_points_batch, G_basis_values_batch, W_integration_weights_batch, sigma_jacobian_batch = self.compute_batch_data( finite_elements, batch_number, batch_size )
 
-        else:                                                                       # Otherwise... ( i.e., the batch option is not recognized... )
+        else:                                                                               # Otherwise... ( i.e., the batch option is not recognized... )
 
             # Throw an error.
             raise ValueError( f'Invalid batch option: {batch_option}' )

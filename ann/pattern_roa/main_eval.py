@@ -309,7 +309,7 @@ def eval_pattern_roa( config: dict = BASE_CONFIG ) -> int:
     A0 = torch.tensor( 2.0, dtype = torch.float32, device = device )
     S0 = torch.tensor( 20.0, dtype = torch.float32, device = device )
     P0_shift = torch.tensor( [ 0.0, 0.0 ], dtype = torch.float32, device = device )
-    z0_shift = -A0/2                                                                                                                      # [-] Initial condition output offset.
+    z0_shift = -A0/2                                                                                                                                # [-] Initial condition output offset.
 
     # Define the flow functions.
     flow_function1 = lambda s: torch.unsqueeze( -torch.sin( s[ :, 1 ] ) - 0.5*torch.sin( s[ :, 1 ] - s[ :, 2 ] ) + 0.01, dim = 1 )
@@ -333,13 +333,13 @@ def eval_pattern_roa( config: dict = BASE_CONFIG ) -> int:
     f_bc_4 = lambda s: A0/( 1 + torch.exp( -S0*( torch.norm( s[ :, 1: ] - P0_shift, 2, dim = 1, keepdim = True ) - R0 ) ) ) + z0_shift              # [-] Boundary condition function.
 
     # Define the initial-boundary condition information.                                                                                            # [Lower/Upper] Initial-Boundary condition placement.
-    ibc_types = [ 'dirichlet', 'dirichlet', 'dirichlet', 'dirichlet', 'dirichlet' ]                                                                                           # [-] Initial-Boundary condition types (e.g., dirichlet, neumann, etc.).
-    ibc_dimensions = torch.tensor( [ 0, 1, 1, 2, 2 ], dtype = torch.uint8, device = device )                                                              # [-] Dimensions associated with each initial-boundary condition.
-    ibc_condition_functions = [ f_ic, f_bc_1, f_bc_2, f_bc_3, f_bc_4 ]                                                                                              # [-] List of initial-boundary conditions.
-    ibc_placements = [ 'lower', 'lower', 'upper', 'lower', 'upper' ]                                                                                                  # [Lower/Upper] Initial-Boundary condition placement.
+    ibc_types = [ 'dirichlet', 'dirichlet', 'dirichlet', 'dirichlet', 'dirichlet' ]                                                                 # [-] Initial-Boundary condition types (e.g., dirichlet, neumann, etc.).
+    ibc_dimensions = torch.tensor( [ 0, 1, 1, 2, 2 ], dtype = torch.uint8, device = device )                                                        # [-] Dimensions associated with each initial-boundary condition.
+    ibc_condition_functions = [ f_ic, f_bc_1, f_bc_2, f_bc_3, f_bc_4 ]                                                                              # [-] List of initial-boundary conditions.
+    ibc_placements = [ 'lower', 'lower', 'upper', 'lower', 'upper' ]                                                                                # [Lower/Upper] Initial-Boundary condition placement.
 
     # Define the PDE name and type.
-    pde_name = 'Yuan-Li PDE: Pattern ROA'                                                                                                            # [-] PDE name.
+    pde_name = 'Yuan-Li PDE: Pattern ROA'                                                                                                           # [-] PDE name.
     pde_type = 'First Order'  
 
     # Create the problem specifications object.

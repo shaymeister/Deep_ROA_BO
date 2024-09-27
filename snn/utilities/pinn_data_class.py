@@ -226,7 +226,7 @@ class pinn_data_class(  ):
     def validate_dimension_labels( self, dimension_labels, set_flag = False ):
 
         # Determine whether the dimension labels are valid.
-        if not self.is_dimension_labels_valid( dimension_labels ):                      # If the dimension labels are not valid...
+        if not self.is_dimension_labels_valid( dimension_labels ):              # If the dimension labels are not valid...
 
             # Throw an error.
             raise ValueError( f'Invalid dimension labels: {dimension_labels}' )
